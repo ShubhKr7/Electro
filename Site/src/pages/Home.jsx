@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
@@ -6,6 +7,7 @@ import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
 
 const Home = () => {
+  const navigate = useNavigate();
   const { addToCart } = useAppContext();
 
   const products = [
@@ -150,6 +152,7 @@ const Home = () => {
           className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => navigate("/catalog")}
         >
           View All Products
         </motion.button>

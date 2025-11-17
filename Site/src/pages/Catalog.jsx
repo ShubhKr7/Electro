@@ -3,8 +3,11 @@ import { useFetch } from "../hooks/useFetch";
 import ProductCard from "../components/ProductCard";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
+import { useAppContext } from "../contexts/AppContext";
 
 const Catalog = () => {
+  const { addToCart } = useAppContext();
+
   // Mock data for demonstration
   const components = [
     {
@@ -84,9 +87,7 @@ const Catalog = () => {
               description={component.description}
               price={component.price}
               imageUrl={component.imageUrl}
-              onAddToCart={() =>
-                console.log(`Added ${component.title} to cart`)
-              }
+              onAddToCart={() => addToCart(component)}
             />
           </motion.div>
         ))}
