@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAppContext } from "../contexts/AppContext";
 import { motionVariants } from "../animations/motionVariants";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const { cart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems } =
     useAppContext();
 
@@ -50,7 +52,7 @@ const Cart = () => {
             className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => (window.location.href = "/")}
+            onClick={() => navigate("/")}
           >
             Continue Shopping
           </motion.button>
@@ -196,6 +198,7 @@ const Cart = () => {
                 className="w-full mt-8 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => navigate("/checkout")}
               >
                 Proceed to Checkout
               </motion.button>
@@ -203,7 +206,7 @@ const Cart = () => {
                 className="w-full mt-4 bg-transparent border-2 border-dark-600 text-dark-300 font-semibold py-3 px-6 rounded-lg hover:bg-dark-800 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => (window.location.href = "/")}
+                onClick={() => navigate("/")}
               >
                 Continue Shopping
               </motion.button>

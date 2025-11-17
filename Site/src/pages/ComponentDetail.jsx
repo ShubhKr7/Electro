@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
+import { useAppContext } from "../contexts/AppContext";
 
 const ComponentDetail = () => {
   const { id } = useParams();
+  const { addToCart } = useAppContext();
 
   // Mock data for demonstration
   const components = [
@@ -70,7 +72,10 @@ const ComponentDetail = () => {
       <p className="text-gray-700 mb-2">Description: {component.description}</p>
       <p className="text-gray-700 mb-2">Price: ${component.price.toFixed(2)}</p>
       <p className="text-gray-700 mb-2">Category: {component.category}</p>
-      <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+      <button
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+        onClick={() => addToCart(component)}
+      >
         Add to Cart
       </button>
     </motion.div>
