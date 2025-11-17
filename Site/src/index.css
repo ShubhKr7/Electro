@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-dark-50 text-dark-900 dark:bg-dark-900 dark:text-dark-100;
+  }
+
+  body {
+    @apply bg-dark-50 text-dark-900 dark:bg-dark-900 dark:text-dark-100 font-sans transition-colors duration-300;
+  }
+}
+
+@layer components {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-dark-900 dark:text-dark-100;
+  }
+
+  a {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200;
+  }
+
+  button {
+    @apply bg-primary-600 dark:bg-primary-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-primary-700 dark:hover:bg-primary-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-800 rounded-xl shadow-lg
+           p-6 transition-all duration-300 transform
+           hover:scale-105 hover:shadow-xl
+           border border-dark-200 dark:border-dark-700;
+  }
+
+  .header {
+    @apply bg-white dark:bg-dark-800 shadow-lg border-b border-dark-200 dark:border-dark-700;
+  }
+
+  .footer {
+    @apply bg-dark-800 dark:bg-dark-900 text-dark-100 dark:text-dark-200 py-6 border-t border-dark-700 dark:border-dark-800;
+  }
+
+  .input {
+    @apply border border-dark-300 dark:border-dark-600 rounded-lg p-3 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply text-dark-700 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
