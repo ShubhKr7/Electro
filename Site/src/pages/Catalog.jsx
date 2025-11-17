@@ -13,6 +13,8 @@ const Catalog = () => {
         { id: 4, title: 'Arduino Uno', description: 'Microcontroller board', price: 25.00, imageUrl: 'https://via.placeholder.com/300x200?text=Arduino' },
         { id: 5, title: 'Breadboard', description: '830 tie-points breadboard', price: 8.50, imageUrl: 'https://via.placeholder.com/300x200?text=Breadboard' },
         { id: 6, title: 'Jumper Wires', description: 'Male to male jumper wires', price: 5.00, imageUrl: 'https://via.placeholder.com/300x200?text=Jumper+Wires' },
+        { id: 7, title: 'Jumper Wires', description: 'Male to male jumper wires', price: 5.00, imageUrl: 'https://via.placeholder.com/300x200?text=Jumper+Wires' },
+        { id: 8, title: 'Jumper Wires', description: 'Male to male jumper wires', price: 5.00, imageUrl: 'https://via.placeholder.com/300x200?text=Jumper+Wires' },
     ];
 
     return (

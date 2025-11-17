@@ -41,7 +41,7 @@ const Footer = () => {
                         <motion.a
                             key={index}
                             href={item.href}
-                            className="hover:text-primary-400 dark:hover:text-primary-300 transition-colors duration-200 text-base font-medium"
+                            className="hover:text-primary-300 transition-colors duration-200 text-base font-medium"
                             variants={{
                                 hidden: { y: 20, opacity: 0 },
                                 visible: { y: 0, opacity: 1 }

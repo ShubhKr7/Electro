@@ -65,7 +65,7 @@ const Home = () => {
                 variants={motionVariants.fadeInUp}
             >
                 <motion.h1
-                    className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 dark:from-primary-400 dark:via-secondary-400 dark:to-primary-600 bg-clip-text text-transparent"
+                    className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
                     variants={motionVariants.title}
                     initial="hidden"
                     animate="visible"
@@ -73,7 +73,7 @@ const Home = () => {
                     Welcome to the Electronic Components Store
                 </motion.h1>
                 <motion.p
-                    className="text-xl text-dark-600 dark:text-dark-400 max-w-2xl mx-auto leading-relaxed"
+                    className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
@@ -98,7 +98,7 @@ const Home = () => {
                 animate="visible"
                 transition={{ delay: 0.4 }}
             >
-                <h2 className="text-3xl font-bold text-center mb-8 text-dark-900 dark:text-dark-100">
+                <h2 className="text-3xl font-bold text-center mb-8 text-dark-100">
                     Featured Products
                 </h2>
             </motion.div>
@@ -135,7 +135,7 @@ const Home = () => {
                 transition={{ delay: 0.8 }}
             >
                 <motion.button
-                    className="bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 dark:to-secondary-500 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                    className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >

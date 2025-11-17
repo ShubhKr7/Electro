@@ -25,7 +25,7 @@ const ProductCard = ({ title, description, price, imageUrl, onAddToCart }) => {
             </motion.div>
             <div className="p-6">
                 <motion.h2
-                    className="text-xl font-bold mb-2 text-dark-900 dark:text-dark-100"
+                    className="text-xl font-bold mb-2 text-dark-100"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
@@ -33,7 +33,7 @@ const ProductCard = ({ title, description, price, imageUrl, onAddToCart }) => {
                     {title}
                 </motion.h2>
                 <motion.p
-                    className="text-dark-600 dark:text-dark-400 mb-4 line-clamp-2"
+                    className="text-dark-400 mb-4 line-clamp-2"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -46,13 +46,13 @@ const ProductCard = ({ title, description, price, imageUrl, onAddToCart }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                 >
-                    <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                    <span className="text-2xl font-bold text-primary-400">
                         ${price.toFixed(2)}
                     </span>
                 </motion.div>
                 <motion.button
                     onClick={onAddToCart}
-                    className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-500 dark:to-secondary-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     initial={{ opacity: 0, y: 10 }}
