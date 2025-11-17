@@ -7,21 +7,30 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const navItems = [
+    { to: "/", label: "Home" },
+    { to: "/catalog", label: "Catalog" },
+    { to: "/cart", label: "Cart" },
+    { to: "/about", label: "About" },
+  ];
+
   return (
     <motion.header
-      className="header p-4 md:p-6"
+      className="header p-4 md:p-6 backdrop-blur-sm"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="container mx-auto flex justify-between items-center">
         <motion.h1
-          className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent"
+          className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           <Link to="/">Electronic Components</Link>
         </motion.h1>
+
+        {/* Desktop nav */}
         <nav className="hidden md:block">
           <motion.ul
             className="flex space-x-8"
@@ -38,12 +47,7 @@ const Header = () => {
               },
             }}
           >
-            {[
-              { to: "/", label: "Home" },
-              { to: "/catalog", label: "Catalog" },
-              { to: "/cart", label: "Cart" },
-              { to: "/about", label: "About" },
-            ].map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.li
                 key={index}
                 variants={{
@@ -51,15 +55,20 @@ const Header = () => {
                   visible: { y: 0, opacity: 1 },
                 }}
               >
-                <Link to={item.to} className="nav-link text-lg font-medium">
+                <Link
+                  to={item.to}
+                  className="nav-link text-sm md:text-lg font-medium"
+                >
                   {item.label}
                 </Link>
               </motion.li>
             ))}
           </motion.ul>
         </nav>
+
+        {/* Mobile menu button */}
         <button
-          className="md:hidden text-dark-300 hover:text-primary-400 focus:outline-none"
+          className="md:hidden text-dark-200 hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg p-1"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -74,29 +83,30 @@ const Header = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              d={
+                isMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
             />
           </svg>
         </button>
       </div>
+
+      {/* Mobile nav */}
       {isMenuOpen && (
         <motion.div
-          className="md:hidden mt-4"
+          className="md:hidden mt-4 border-t border-dark-700 pt-4 bg-dark-900/90 rounded-b-xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <ul className="flex flex-col space-y-4">
-            {[
-              { to: "/", label: "Home" },
-              { to: "/catalog", label: "Catalog" },
-              { to: "/cart", label: "Cart" },
-              { to: "/about", label: "About" },
-            ].map((item, index) => (
+          <ul className="flex flex-col space-y-3 px-2">
+            {navItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.to}
-                  className="nav-link text-lg font-medium block py-2"
+                  className="nav-link block py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

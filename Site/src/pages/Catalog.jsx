@@ -1,6 +1,6 @@
+// Catalog.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import ProductCard from "../components/ProductCard";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -10,7 +10,6 @@ const Catalog = () => {
   const { addToCart } = useAppContext();
   const navigate = useNavigate();
 
-  // Mock data for demonstration
   const components = [
     {
       id: "1",
@@ -71,17 +70,35 @@ const Catalog = () => {
   ];
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Catalog of Electronic Components
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <motion.div
+      className="container mx-auto px-4 py-12"
+      initial="hidden"
+      animate="visible"
+      variants={motionVariants.staggerContainer}
+    >
+      <motion.div
+        className="text-center mb-10"
+        variants={motionVariants.fadeInUp}
+      >
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent">
+          Component Catalog
+        </h1>
+        <p className="text-lg text-dark-200 max-w-2xl mx-auto leading-relaxed">
+          Explore our full range of electronic components. Mix and match parts
+          to prototype, experiment, and build production-ready hardware.
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        variants={motionVariants.grid}
+        initial="hidden"
+        animate="visible"
+      >
         {components.map((component) => (
           <motion.div
             key={component.id}
-            variants={motionVariants}
-            initial="hidden"
-            animate="visible"
+            variants={motionVariants.card}
             className="transition-transform transform hover:scale-105"
           >
             <ProductCard
@@ -94,8 +111,8 @@ const Catalog = () => {
             />
           </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

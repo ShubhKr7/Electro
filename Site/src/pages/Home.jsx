@@ -12,6 +12,7 @@ const Home = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); // NEW
 
   const products = [
     {
@@ -82,6 +83,7 @@ const Home = () => {
   ];
 
   const categories = [...new Set(products.map((p) => p.category))];
+
   const subcategories = useMemo(() => {
     if (!selectedCategory) return [];
     return [
@@ -94,13 +96,28 @@ const Home = () => {
   }, [selectedCategory, products]);
 
   const filteredProducts = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase(); // NEW
+
     return products.filter((p) => {
       if (selectedCategory && p.category !== selectedCategory) return false;
       if (selectedSubcategory && p.subcategory !== selectedSubcategory)
         return false;
-      return true;
+
+      if (!q) return true;
+
+      const haystack = (
+        p.title +
+        " " +
+        p.description +
+        " " +
+        p.category +
+        " " +
+        p.subcategory
+      ).toLowerCase();
+
+      return haystack.includes(q);
     });
-  }, [selectedCategory, selectedSubcategory, products]);
+  }, [selectedCategory, selectedSubcategory, searchQuery, products]); // searchQuery added
 
   return (
     <motion.div
@@ -114,7 +131,7 @@ const Home = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
           variants={motionVariants.title}
           initial="hidden"
           animate="visible"
@@ -122,7 +139,7 @@ const Home = () => {
           Welcome to the Electronic Components Store
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -138,7 +155,10 @@ const Home = () => {
         animate="visible"
         transition={{ delay: 0.2 }}
       >
-        <SearchBar />
+        <SearchBar
+          query={searchQuery}
+          onQueryChange={setSearchQuery}
+        />
       </motion.div>
 
       <motion.div
@@ -148,34 +168,38 @@ const Home = () => {
         animate="visible"
         transition={{ delay: 0.4 }}
       >
-        <h2 className="text-3xl font-bold text-center mb-8 text-dark-100">
+        <h2 className="text-3xl font-bold text-center mb-8 text-dark-50">
           Featured Products
         </h2>
 
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <select
             value={selectedCategory}
             onChange={(e) => {
               setSelectedCategory(e.target.value);
               setSelectedSubcategory("");
             }}
-            className="input px-4 py-2"
+            className="input px-4 py-2 min-w-[200px]"
           >
             <option value="">All Categories</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
 
           <select
             value={selectedSubcategory}
             onChange={(e) => setSelectedSubcategory(e.target.value)}
-            className="input px-4 py-2"
+            className="input px-4 py-2 min-w-[200px]"
             disabled={!selectedCategory}
           >
             <option value="">All Subcategories</option>
-            {subcategories.map(sub => (
-              <option key={sub} value={sub}>{sub}</option>
+            {subcategories.map((sub) => (
+              <option key={sub} value={sub}>
+                {sub}
+              </option>
             ))}
           </select>
         </div>
@@ -187,7 +211,7 @@ const Home = () => {
         initial="hidden"
         animate="visible"
       >
-        {filteredProducts.map((product, index) => (
+        {filteredProducts.map((product) => (
           <motion.div
             key={product.id}
             variants={motionVariants.card}
@@ -214,7 +238,7 @@ const Home = () => {
         transition={{ delay: 0.8 }}
       >
         <motion.button
-          className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+          className="bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/catalog")}
