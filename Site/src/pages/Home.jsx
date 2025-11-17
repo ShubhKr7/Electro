@@ -3,8 +3,56 @@ import { motion } from 'framer-motion';
 import SearchBar from '../components/SearchBar';
 import ProductCard from '../components/ProductCard';
 import { motionVariants } from '../animations/motionVariants';
+import { useAppContext } from '../contexts/AppContext';
 
 const Home = () => {
+    const { addToCart } = useAppContext();
+
+    const products = [
+        {
+            id: 1,
+            title: "Arduino Uno R3",
+            description: "Microcontroller board based on the ATmega328P with 14 digital input/output pins.",
+            price: 22.99,
+            imageUrl: "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Arduino+Uno"
+        },
+        {
+            id: 2,
+            title: "Raspberry Pi 4",
+            description: "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
+            price: 35.99,
+            imageUrl: "https://via.placeholder.com/400x300/DC2626/FFFFFF?text=Raspberry+Pi+4"
+        },
+        {
+            id: 3,
+            title: "ESP32 Development Board",
+            description: "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
+            price: 8.99,
+            imageUrl: "https://via.placeholder.com/400x300/059669/FFFFFF?text=ESP32"
+        },
+        {
+            id: 4,
+            title: "LED Strip 5M",
+            description: "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
+            price: 15.99,
+            imageUrl: "https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=LED+Strip"
+        },
+        {
+            id: 5,
+            title: "Servo Motor MG996R",
+            description: "High-torque servo motor with metal gears, ideal for robotics projects.",
+            price: 12.99,
+            imageUrl: "https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Servo+Motor"
+        },
+        {
+            id: 6,
+            title: "Breadboard 830 Points",
+            description: "Solderless breadboard for prototyping electronic circuits without soldering.",
+            price: 6.99,
+            imageUrl: "https://via.placeholder.com/400x300/0891B2/FFFFFF?text=Breadboard"
+        }
+    ];
+
     return (
         <motion.div
             className="container mx-auto px-4 py-12"
@@ -61,46 +109,9 @@ const Home = () => {
                 initial="hidden"
                 animate="visible"
             >
-                {[
-                    {
-                        title: "Arduino Uno R3",
-                        description: "Microcontroller board based on the ATmega328P with 14 digital input/output pins.",
-                        price: 22.99,
-                        imageUrl: "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Arduino+Uno"
-                    },
-                    {
-                        title: "Raspberry Pi 4",
-                        description: "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
-                        price: 35.99,
-                        imageUrl: "https://via.placeholder.com/400x300/DC2626/FFFFFF?text=Raspberry+Pi+4"
-                    },
-                    {
-                        title: "ESP32 Development Board",
-                        description: "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
-                        price: 8.99,
-                        imageUrl: "https://via.placeholder.com/400x300/059669/FFFFFF?text=ESP32"
-                    },
-                    {
-                        title: "LED Strip 5M",
-                        description: "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
-                        price: 15.99,
-                        imageUrl: "https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=LED+Strip"
-                    },
-                    {
-                        title: "Servo Motor MG996R",
-                        description: "High-torque servo motor with metal gears, ideal for robotics projects.",
-                        price: 12.99,
-                        imageUrl: "https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Servo+Motor"
-                    },
-                    {
-                        title: "Breadboard 830 Points",
-                        description: "Solderless breadboard for prototyping electronic circuits without soldering.",
-                        price: 6.99,
-                        imageUrl: "https://via.placeholder.com/400x300/0891B2/FFFFFF?text=Breadboard"
-                    }
-                ].map((product, index) => (
+                {products.map((product, index) => (
                     <motion.div
-                        key={index}
+                        key={product.id}
                         variants={motionVariants.card}
                         whileHover="hover"
                         whileTap="tap"
@@ -110,7 +121,7 @@ const Home = () => {
                             description={product.description}
                             price={product.price}
                             imageUrl={product.imageUrl}
-                            onAddToCart={() => console.log(`Added ${product.title} to cart`)}
+                            onAddToCart={() => addToCart(product)}
                         />
                     </motion.div>
                 ))}

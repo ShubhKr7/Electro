@@ -37,6 +37,7 @@ const Header = () => {
                         {[
                             { to: "/", label: "Home" },
                             { to: "/catalog", label: "Catalog" },
+                            { to: "/cart", label: "Cart" },
                             { to: "/about", label: "About" }
                         ].map((item, index) => (
                             <motion.li
