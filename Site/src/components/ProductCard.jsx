@@ -13,7 +13,7 @@ const ProductCard = ({
 }) => {
   return (
     <motion.div
-      className="card group cursor-pointer"
+      className="card group backdrop-blur-sm cursor-pointer"
       variants={motionVariants}
       initial="initial"
       whileHover="hover"
@@ -76,7 +76,7 @@ const ProductCard = ({
             e.stopPropagation();
             onAddToCart();
           }}
-          className="w-full bg-transparent text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
+          className="w-full bg-transparent text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base "
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, y: 10 }}

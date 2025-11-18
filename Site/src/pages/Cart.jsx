@@ -1,4 +1,3 @@
-// Cart.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -20,21 +19,19 @@ const Cart = () => {
       animate="visible"
       variants={motionVariants.staggerContainer}
     >
+      {/* Page Title */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
+        className="text-4xl md:text-5xl font-bold text-center mb-8 text-white"
         variants={motionVariants.title}
-        initial="hidden"
-        animate="visible"
       >
         Your Shopping Cart
       </motion.h1>
 
+      {/* Empty Cart */}
       {cart.length === 0 ? (
         <motion.div
-          className="text-center py-16"
+          className="text-center backdrop-blur-sm py-16"
           variants={motionVariants.fadeInUp}
-          initial="hidden"
-          animate="visible"
         >
           <motion.div
             className="text-6xl mb-4"
@@ -43,15 +40,17 @@ const Cart = () => {
           >
             🛒
           </motion.div>
-          <h2 className="text-2xl font-semibold text-dark-200 mb-4">
+
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Your cart is empty
           </h2>
-          <p className="text-dark-400 mb-8">
-            Browse our components and add items to start building your next
-            project.
+
+          <p className="text-white mb-8">
+            Browse our components and add items to start building your next project.
           </p>
+
           <motion.button
-            className="bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/")}
@@ -61,16 +60,15 @@ const Cart = () => {
         </motion.div>
       ) : (
         <>
+          {/* Items Count */}
           <motion.div
             className="mb-8 text-center"
             variants={motionVariants.fadeInUp}
-            initial="hidden"
-            animate="visible"
             transition={{ delay: 0.2 }}
           >
-            <p className="text-lg text-dark-300">
+            <p className="text-lg text-white">
               You have{" "}
-              <span className="font-semibold text-dark-50">
+              <span className="font-semibold text-white">
                 {totalItems} {totalItems === 1 ? "item" : "items"}
               </span>{" "}
               in your cart.
@@ -80,21 +78,14 @@ const Cart = () => {
           <motion.div
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             variants={motionVariants.staggerContainer}
-            initial="hidden"
-            animate="visible"
           >
             {/* Cart Items */}
-            <motion.div
-              className="space-y-6"
-              variants={motionVariants.fadeInUp}
-            >
+            <motion.div className="space-y-6 " variants={motionVariants.fadeInUp}>
               {cart.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  className="card flex items-center space-x-4"
+                  className="card flex backdrop-blur-sm items-center space-x-4"
                   variants={motionVariants.card}
-                  initial="hidden"
-                  animate="visible"
                   transition={{ delay: index * 0.1 }}
                   whileHover="hover"
                 >
@@ -105,42 +96,49 @@ const Cart = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   />
+
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-dark-50">
+                    <h3 className="text-lg font-semibold text-white">
                       {item.title}
                     </h3>
-                    <p className="text-dark-400 text-sm line-clamp-2">
+
+                    <p className="text-white text-sm line-clamp-2">
                       {item.description}
                     </p>
-                    <p className="text-primary-400 font-bold">
+
+                    <p className="text-white font-bold">
                       ${item.price.toFixed(2)}
                     </p>
                   </div>
+
                   <div className="flex items-center space-x-2">
                     <motion.button
                       onClick={() =>
                         updateQuantity(item.id, item.quantity - 1)
                       }
-                      className="bg-dark-800 text-dark-200 w-8 h-8 rounded-full flex items-center justify-center hover:bg-dark-700 transition-colors"
+                      className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
                       -
                     </motion.button>
-                    <span className="w-8 text-center font-semibold text-dark-50">
+
+                    <span className="w-8 text-center font-semibold text-white">
                       {item.quantity}
                     </span>
+
                     <motion.button
                       onClick={() =>
                         updateQuantity(item.id, item.quantity + 1)
                       }
-                      className="bg-dark-800 text-dark-200 w-8 h-8 rounded-full flex items-center justify-center hover:bg-dark-700 transition-colors"
+                      className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
                       +
                     </motion.button>
                   </div>
+
                   <motion.button
                     onClick={() => removeFromCart(item.id)}
                     className="text-red-400 hover:text-red-500 p-2"
@@ -167,53 +165,61 @@ const Cart = () => {
 
             {/* Order Summary */}
             <motion.div
-              className="card"
+              className="card backdrop-blur-sm"
               variants={motionVariants.fadeInUp}
-              initial="hidden"
-              animate="visible"
               transition={{ delay: 0.4 }}
             >
-              <h2 className="text-2xl font-bold mb-6 text-dark-50">
+              <h2 className="text-2xl font-bold mb-6 text-white">
                 Order Summary
               </h2>
+
               <div className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-dark-400">
-                    Subtotal ({totalItems}{" "}
-                    {totalItems === 1 ? "item" : "items"})
+                  <span className="text-white">
+                    Subtotal ({totalItems} {totalItems === 1 ? "item" : "items"})
                   </span>
-                  <span className="font-semibold text-dark-50">
+
+                  <span className="font-semibold text-white">
                     ${totalPrice.toFixed(2)}
                   </span>
                 </div>
+
                 <div className="flex justify-between">
-                  <span className="text-dark-400">Shipping</span>
-                  <span className="font-semibold text-emerald-400">Free</span>
+                  <span className="text-white">Shipping</span>
+                  <span className="font-semibold text-white">Free</span>
                 </div>
+
                 <div className="flex justify-between">
-                  <span className="text-dark-400">Estimated Tax</span>
-                  <span className="font-semibold text-dark-50">
+                  <span className="text-white">Estimated Tax</span>
+
+                  <span className="font-semibold text-white">
                     ${(totalPrice * 0.08).toFixed(2)}
                   </span>
                 </div>
-                <hr className="border-dark-700" />
+
+                <hr className="border-white/20" />
+
                 <div className="flex justify-between text-xl font-bold">
-                  <span className="text-dark-50">Total</span>
-                  <span className="text-primary-400">
+                  <span className="text-white">Total</span>
+
+                  <span className="text-white">
                     ${(totalPrice + totalPrice * 0.08).toFixed(2)}
                   </span>
                 </div>
               </div>
+
+              {/* Checkout button */}
               <motion.button
-                className="w-full mt-8 bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="w-full mt-8 bg-white text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate("/checkout")}
               >
                 Proceed to Checkout
               </motion.button>
+
               <motion.button
-                className="w-full mt-4 bg-transparent border-2 border-dark-700 text-dark-200 font-semibold py-3 px-6 rounded-lg hover:bg-dark-900 transition-all duration-300"
+                className="w-full mt-4 bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate("/catalog")}

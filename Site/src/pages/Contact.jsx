@@ -1,4 +1,3 @@
-// Contact.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -34,15 +33,13 @@ const Contact = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 text-white"
           variants={motionVariants.title}
-          initial="hidden"
-          animate="visible"
         >
           Contact Us
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -54,20 +51,18 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <motion.div
-          className="card"
+          className="card backdrop-blur-sm"
           variants={motionVariants.fadeInUp}
-          initial="hidden"
-          animate="visible"
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-2xl font-bold mb-6 text-primary-400">
+          <h2 className="text-2xl font-bold mb-6 text-emerald-300">
             Send us a Message
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-dark-300 mb-1"
+                className="block text-sm font-medium text-white/70 mb-1"
               >
                 Name
               </label>
@@ -85,7 +80,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-dark-300 mb-1"
+                className="block text-sm font-medium text-white/70 mb-1"
               >
                 Email
               </label>
@@ -103,7 +98,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="subject"
-                className="block text-sm font-medium text-dark-300 mb-1"
+                className="block text-sm font-medium text-white/70 mb-1"
               >
                 Subject
               </label>
@@ -121,7 +116,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-dark-300 mb-1"
+                className="block text-sm font-medium text-white/70 mb-1"
               >
                 Message
               </label>
@@ -138,7 +133,7 @@ const Contact = () => {
             </div>
             <motion.button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full bg-white text-black font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-white/90 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -150,34 +145,32 @@ const Contact = () => {
         <motion.div
           className="space-y-8"
           variants={motionVariants.fadeInUp}
-          initial="hidden"
-          animate="visible"
           transition={{ delay: 0.6 }}
         >
-          <div className="card">
-            <h2 className="text-2xl font-bold mb-4 text-primary-400">
+          <div className="card backdrop-blur-sm">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-300">
               Get in Touch
             </h2>
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📧</div>
                 <div>
-                  <p className="font-semibold text-dark-50">Email</p>
-                  <p className="text-dark-300">support@electrostore.com</p>
+                  <p className="font-semibold text-white">Email</p>
+                  <p className="text-white/70">support@electrostore.com</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📞</div>
                 <div>
-                  <p className="font-semibold text-dark-50">Phone</p>
-                  <p className="text-dark-300">+1 (555) 123-4567</p>
+                  <p className="font-semibold text-white">Phone</p>
+                  <p className="text-white/70">+1 (555) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📍</div>
                 <div>
-                  <p className="font-semibold text-dark-50">Address</p>
-                  <p className="text-dark-300">
+                  <p className="font-semibold text-white">Address</p>
+                  <p className="text-white/70">
                     123 Electronics Ave
                     <br />
                     Tech City, TC 12345
@@ -187,15 +180,15 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="card">
-            <h2 className="text-2xl font-bold mb-4 text-primary-400">
+          <div className="card backdrop-blur-sm">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-300">
               Business Hours
             </h2>
-            <div className="space-y-2 text-dark-300">
+            <div className="space-y-2 text-white/70">
               <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
               <p>Saturday: 10:00 AM – 4:00 PM</p>
               <p>Sunday: Closed</p>
-              <p className="text-xs text-dark-500 mt-2">
+              <p className="text-xs text-white/60 mt-2">
                 Response times may vary during holidays and peak seasons, but we
                 do our best to reply within one business day.
               </p>

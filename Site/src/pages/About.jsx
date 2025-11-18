@@ -1,4 +1,3 @@
-// About.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -16,15 +15,13 @@ const About = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 text-white"
           variants={motionVariants.title}
-          initial="hidden"
-          animate="visible"
         >
           About Us
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -38,18 +35,16 @@ const About = () => {
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
         variants={motionVariants.grid}
-        initial="hidden"
-        animate="visible"
       >
         <motion.div
-          className="card"
+          className="card backdrop-blur-sm"
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+          <h2 className="text-2xl font-bold mb-4 text-emerald-300">
             Our Story
           </h2>
-          <p className="text-dark-300 leading-relaxed">
+          <p className="text-white/70 leading-relaxed">
             Founded in 2020, we started as a small group of electronics
             enthusiasts who struggled to find reliable parts for our own
             projects. What began as a tiny inventory in a single room has grown
@@ -60,14 +55,14 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          className="card"
+          className="card backdrop-blur-sm"
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+          <h2 className="text-2xl font-bold mb-4 text-emerald-300">
             Our Mission
           </h2>
-          <p className="text-dark-300 leading-relaxed">
+          <p className="text-white/70 leading-relaxed">
             Our mission is to remove friction from building hardware. We focus
             on stocking dependable components, clear documentation, and
             responsive support so you can spend less time hunting for parts and
@@ -80,52 +75,50 @@ const About = () => {
       <motion.div
         className="text-center"
         variants={motionVariants.fadeInUp}
-        initial="hidden"
-        animate="visible"
         transition={{ delay: 0.6 }}
       >
-        <h2 className="text-3xl font-bold mb-8 text-dark-50">
+        <h2 className="text-3xl font-bold mb-8 text-white">
           Why Choose Us?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <motion.div
-            className="card text-center"
+            className="card backdrop-blur-sm text-center"
             variants={motionVariants.card}
             whileHover="hover"
           >
             <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-xl font-bold mb-2 text-dark-50">
+            <h3 className="text-xl font-bold mb-2 text-white">
               Fast Shipping
             </h3>
-            <p className="text-dark-300">
+            <p className="text-white/70">
               Optimized logistics and trusted partners mean your components
               reach you quickly and safely.
             </p>
           </motion.div>
           <motion.div
-            className="card text-center"
+            className="card backdrop-blur-sm text-center"
             variants={motionVariants.card}
             whileHover="hover"
           >
             <div className="text-4xl mb-4">🔧</div>
-            <h3 className="text-xl font-bold mb-2 text-dark-50">
+            <h3 className="text-xl font-bold mb-2 text-white">
               Quality Components
             </h3>
-            <p className="text-dark-300">
+            <p className="text-white/70">
               Carefully sourced, tested parts from reliable manufacturers
               designed for real-world projects.
             </p>
           </motion.div>
           <motion.div
-            className="card text-center"
+            className="card backdrop-blur-sm text-center"
             variants={motionVariants.card}
             whileHover="hover"
           >
             <div className="text-4xl mb-4">💬</div>
-            <h3 className="text-xl font-bold mb-2 text-dark-50">
+            <h3 className="text-xl font-bold mb-2 text-white">
               Expert Support
             </h3>
-            <p className="text-dark-300">
+            <p className="text-white/70">
               A friendly, technical support team ready to help you debug,
               decide, and ship faster.
             </p>

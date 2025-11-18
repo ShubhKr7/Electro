@@ -1,4 +1,3 @@
-// Checkout.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -36,35 +35,31 @@ const Checkout = () => {
 
   return (
     <motion.div
-      className="container mx-auto px-4 py-12"
+      className="container mx-auto px-4 py-12 "
       initial="hidden"
       animate="visible"
       variants={motionVariants.staggerContainer}
     >
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
+        className="text-4xl md:text-5xl font-bold text-center mb-8 text-white"
         variants={motionVariants.title}
-        initial="hidden"
-        animate="visible"
       >
         Checkout
       </motion.h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-8">
         {/* Order Summary */}
         <motion.div
-          className="card"
+          className="card backdrop-blur-sm"
           variants={motionVariants.fadeInUp}
-          initial="hidden"
-          animate="visible"
         >
-          <h2 className="text-2xl font-bold mb-2 text-dark-50">
+          <h2 className="text-2xl font-bold mb-2 text-white">
             Order Summary
           </h2>
-          <p className="text-sm text-dark-400 mb-6">
+          <p className="text-sm text-white/60 mb-6">
             {totalItems === 0
               ? "No items in your cart yet."
-              : `Review your items before placing the order.`}
+              : "Review your items before placing the order."}
           </p>
           <div className="space-y-4">
             {cart.map((item) => (
@@ -73,34 +68,34 @@ const Checkout = () => {
                 className="flex justify-between items-center text-sm"
               >
                 <div>
-                  <h3 className="font-semibold text-dark-50">
+                  <h3 className="font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className="text-dark-400">
+                  <p className="text-white/70">
                     Quantity: {item.quantity}
                   </p>
                 </div>
-                <span className="font-bold text-dark-50">
+                <span className="font-bold text-white">
                   ${(item.price * item.quantity).toFixed(2)}
                 </span>
               </div>
             ))}
-            <hr className="border-dark-700" />
+            <hr className="border-white/20" />
             <div className="flex justify-between text-base font-semibold">
-              <span className="text-dark-300">Subtotal</span>
-              <span className="text-dark-50">
+              <span className="text-white/70">Subtotal</span>
+              <span className="text-white">
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between text-base font-semibold">
-              <span className="text-dark-300">Estimated Tax</span>
-              <span className="text-dark-50">
+              <span className="text-white/70">Estimated Tax</span>
+              <span className="text-white">
                 ${(totalPrice * 0.08).toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between text-xl font-bold mt-2">
-              <span className="text-dark-50">Total</span>
-              <span className="text-primary-400">
+              <span className="text-white">Total</span>
+              <span className="text-emerald-300">
                 ${(totalPrice + totalPrice * 0.08).toFixed(2)}
               </span>
             </div>
@@ -109,24 +104,22 @@ const Checkout = () => {
 
         {/* Checkout Form */}
         <motion.div
-          className="card"
+          className="card backdrop-blur-sm"
           variants={motionVariants.fadeInUp}
-          initial="hidden"
-          animate="visible"
           transition={{ delay: 0.2 }}
         >
-          <h2 className="text-2xl font-bold mb-6 text-dark-50">
+          <h2 className="text-2xl font-bold mb-6 text-white">
             Shipping & Payment Information
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Shipping Information */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-dark-50">
+              <h3 className="text-lg font-semibold mb-4 text-white">
                 Shipping Address
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     Full Name
                   </label>
                   <input
@@ -139,7 +132,7 @@ const Checkout = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     Email
                   </label>
                   <input
@@ -152,7 +145,7 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     Address
                   </label>
                   <input
@@ -165,7 +158,7 @@ const Checkout = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     City
                   </label>
                   <input
@@ -178,7 +171,7 @@ const Checkout = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     ZIP Code
                   </label>
                   <input
@@ -195,12 +188,12 @@ const Checkout = () => {
 
             {/* Payment Information */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-dark-50">
+              <h3 className="text-lg font-semibold mb-4 text-white">
                 Payment Details
               </h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-1">
+                  <label className="block text-sm font-medium text-white/70 mb-1">
                     Card Number
                   </label>
                   <input
@@ -215,7 +208,7 @@ const Checkout = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-dark-300 mb-1">
+                    <label className="block text-sm font-medium text-white/70 mb-1">
                       Expiry Date
                     </label>
                     <input
@@ -229,7 +222,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-dark-300 mb-1">
+                    <label className="block text-sm font-medium text-white/70 mb-1">
                       CVV
                     </label>
                     <input
@@ -248,7 +241,7 @@ const Checkout = () => {
 
             <motion.button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full bg-white text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-white/90 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

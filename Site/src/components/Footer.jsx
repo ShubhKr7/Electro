@@ -11,12 +11,12 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="footer"
+      className="footer backdrop-blur-sm"
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="container mx-auto text-center px-4 py-4">
+      <div className="container mx-auto text-center">
         <motion.p
           className="text-sm md:text-base font-medium text-white mb-4"
           initial={{ opacity: 0 }}

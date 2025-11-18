@@ -80,10 +80,11 @@ const Catalog = () => {
         className="text-center mb-10"
         variants={motionVariants.fadeInUp}
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
           Component Catalog
         </h1>
-        <p className="text-lg text-dark-200 max-w-2xl mx-auto leading-relaxed">
+
+        <p className="text-lg text-white max-w-2xl mx-auto leading-relaxed">
           Explore our full range of electronic components. Mix and match parts
           to prototype, experiment, and build production-ready hardware.
         </p>
