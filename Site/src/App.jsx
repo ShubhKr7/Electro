@@ -15,14 +15,9 @@ import Terms from "./pages/Terms";
 const App = () => {
   return (
     <AppProvider>
-      <Router
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
-        <MainLayout>
-          <Routes>
+      <Router>
+        <Routes>
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/cart" element={<Cart />} />
@@ -32,8 +27,8 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-          </Routes>
-        </MainLayout>
+          </Route>
+        </Routes>
       </Router>
     </AppProvider>
   );
