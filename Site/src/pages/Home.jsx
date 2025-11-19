@@ -10,7 +10,7 @@ import BlurText from "../components/BlurText";
 const Home = () => {
   const navigate = useNavigate();
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Home Page!");
   };
 
   const { addToCart } = useAppContext();

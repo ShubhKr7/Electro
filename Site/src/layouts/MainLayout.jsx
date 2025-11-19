@@ -22,9 +22,9 @@ const MainLayout = () => {
       <div className="flex flex-col min-h-screen bg-transparent text-white transition-colors duration-300">
         <Header />
 
-        <main className="flex-grow px-4 md:px-0 py-6">
+        <div className="flex-grow px-4 md:px-0 py-6">
           <Outlet />
-        </main>
+        </div>
 
         <Footer />
       </div>
